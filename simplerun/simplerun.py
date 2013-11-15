@@ -18,7 +18,6 @@ class Command(object):
         self.exc = None
         self.out = None
         self.err = None
-        self.returncode = 0
 
     def run(self, data=None):
         try:
@@ -26,8 +25,10 @@ class Command(object):
                                     universal_newlines=True,
                                     stdout=subprocess.PIPE,
                                     stdin=subprocess.PIPE,
+                                    stderr=subprocess.PIPE,
                                     shell=False)
             self.out, self.err = proc.communicate(data)
+            self.returncode = proc.returncode
         except Exception as exc:
             self.out = None
             self.err = None
