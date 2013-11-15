@@ -88,8 +88,8 @@ def run(cmds, data=None):
 
 
 if __name__ == "__main__":
-        r = run('wc -l', open('simplerun.py').read())
-        print r.std_out,
+    r = run('wc -l', open('simplerun.py').read())
+    print r.std_out,
 
-        r2 = run('grep def', open('simplerun.py').read())
-        print r2.std_out,
+    r2 = run('grep def', open('simplerun.py').read())
+    print r2.std_out,
