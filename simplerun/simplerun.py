@@ -64,9 +64,11 @@ class Result(object):
 def run(cmds, data=None):
     if isinstance(cmds, basestring):
         cmds = split_cmd(cmds)
-
     cmds = iter(cmds)
-    data = data
+
+
+    if hasattr(data, '__iter__'):
+        data = ''.join(iter(data))
 
     history = []
 
