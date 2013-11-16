@@ -15,11 +15,9 @@ class Command(object):
 
     def __init__(self, stmt):
         self.stmt = stmt
-        self.exc = None
-        self.out = None
-        self.err = None
 
     def run(self, data=None):
+        exc = None
         try:
             proc = subprocess.Popen(self.stmt,
                                     universal_newlines=True,
@@ -27,18 +25,17 @@ class Command(object):
                                     stdin=subprocess.PIPE,
                                     stderr=subprocess.PIPE,
                                     shell=False)
-            self.out, self.err = proc.communicate(data)
-            self.returncode = proc.returncode
+            out, err = proc.communicate(data)
+            returncode = proc.returncode
         except Exception as exc:
-            self.out = None
-            self.err = None
-            self.returncode = -1
-            self.exc = exc
+            out, err = None, None
+            returncode = -1
+            exc = exc
 
         r = Result(self)
-        r.std_out, r.std_err = self.out, self.err
-        r.status_code = self.returncode
-        r.exc = self.exc
+        r.std_out, r.std_err = out, err
+        r.status_code = returncode
+        r.exc = exc
 
         return r
 
@@ -91,11 +88,3 @@ def run(cmds, data=None):
     result.rest = list(cmds)
 
     return result
-
-
-if __name__ == "__main__":
-    r = run('wc -l', open('simplerun.py'))
-    print r.std_out,
-
-    r2 = run('grep def', open('simplerun.py'))
-    print r2.std_out,
