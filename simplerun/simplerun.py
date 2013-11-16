@@ -42,6 +42,9 @@ class Command(object):
 
         return r
 
+    def __str__(self):
+        return ' '.join(self.stmt)
+        
     def __repr__(self):
         return '<Command "{0}">'.format(' '.join(self.stmt))
 
