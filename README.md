@@ -21,3 +21,8 @@ Feed data by yourself:
     print r.std_out
     
 
+Use `Result` as input data:
+--------------------------
+
+    r_data = simplerun.run('ps aux')
+    r = simplerun.run('grep Chrome', r_data)
