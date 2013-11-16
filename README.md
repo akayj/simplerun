@@ -11,14 +11,14 @@ Basic usage:
 
     import simplerun
     r = simplerun.run('ls -l')
-  
 
-Feed data by yourself:
-----------------------
+
+Use iterable as input data:
+--------------------------
 
     r = simplerun.run('grep def', open('simplerun.py'))
     print r.std_out
-    
+
 
 Use `Result` as input data:
 --------------------------
