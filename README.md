@@ -6,17 +6,16 @@ Simple shell wrapper written by Python
 Usage
 =====
 
-Simplest usage:
+Basic usage:
 ---------------
 
     import simplerun
-    r = simplerun.run('ps aux | grep Firefox')
+    r = simplerun.run('ls -l')
   
 
 Feed data by yourself:
 ----------------------
 
-    import simplerun
     r = simplerun.run('grep def', open('simplerun.py'))
     print r.std_out
     
