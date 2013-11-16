@@ -3,6 +3,11 @@ Simplerun
 
 Simple shell wrapper written by Python
 
+Installation
+============
+
+    python setup.py install
+
 Usage
 =====
 
