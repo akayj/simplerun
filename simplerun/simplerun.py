@@ -67,9 +67,12 @@ def run(cmds, data=None):
         cmds = split_cmd(cmds)
     cmds = iter(cmds)
 
-
-    if hasattr(data, '__iter__'):
-        data = ''.join(iter(data))
+    if isinstance(data, Result):
+         data = data.std_out
+    elif hasattr(data, 'next'):
+         data = ''.join(data)
+    elif hasattr(data, '__iter__'):
+         data = ''.join(iter(data))
 
     history = []
 
