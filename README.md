@@ -21,8 +21,9 @@ Basic usage:
 Use iterable as input data:
 --------------------------
 
-    r = simplerun.run('grep def', open('simplerun.py'))
-    print r.std_out
+    with open('simplerun.py') as f:
+        r = simplerun.run('grep def', open('simplerun.py'))
+        print r.std_out
 
 
 Use `Result` as input data:
