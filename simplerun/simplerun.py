@@ -41,7 +41,7 @@ class Command(object):
 
     def __str__(self):
         return ' '.join(self.stmt)
-        
+
     def __repr__(self):
         return '<Command "{0}">'.format(' '.join(self.stmt))
 
@@ -69,10 +69,8 @@ def run(cmds, data=None):
 
     if isinstance(data, Result):
          data = data.std_out
-    elif hasattr(data, 'next'):
-         data = ''.join(data)
     elif hasattr(data, '__iter__'):
-         data = ''.join(iter(data))
+         data = ''.join(data)
 
     history = []
 
