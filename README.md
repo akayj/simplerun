@@ -22,7 +22,7 @@ Use iterable as input data:
 --------------------------
 
     with open('simplerun.py') as f:
-        r = simplerun.run('grep def', open('simplerun.py'))
+        r = simplerun.run('grep def', f)
         print r.std_out
 
 
