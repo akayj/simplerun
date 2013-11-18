@@ -1,7 +1,7 @@
 Simplerun
 =========
 
-Simple shell wrapper written by Python
+Make shell script running in a Pythonic way.
 
 Installation
 ============
