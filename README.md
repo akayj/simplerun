@@ -6,6 +6,10 @@ Simple shell wrapper written by Python
 Installation
 ============
 
+    pip install simplerun
+
+or
+
     python setup.py install
 
 Usage
