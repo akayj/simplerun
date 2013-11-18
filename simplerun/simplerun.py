@@ -59,7 +59,7 @@ class Result(object):
         self.exc = None
 
     def __repr__(self):
-        return '<Result [{0}]>'.format(self.status_code)
+        return "<[{}] `{}`>".format(self.status_code, self.command)
 
 
 def run(cmds, data=None):
