@@ -3,4 +3,4 @@
 from .simplerun import run
 run = run # make tricky with pep8
 
-__version__ = '0.1'
+__version__ = '0.2'
