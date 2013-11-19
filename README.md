@@ -21,12 +21,11 @@ Basic usage:
     >> import simplerun
     >> r = simplerun.run('ls -l')
     >> r
-
-    return a formated text, `0` infer to the exit code here.
     <[0] `ls -l`>
+`0` refer to the exit code here.
+    
 
     >> print r.std_out
-
     total 8
     -rw-r--r-- 1 yj staff 664 11 19 21:46 README.md
     -rw-r--r-- 1 yj staff 829 11 18 22:39 setup.py
