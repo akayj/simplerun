@@ -1,5 +1,12 @@
+import sys
 import shlex
 import subprocess
+
+
+PY3 = (sys.version[0] == '3')
+
+if PY3:
+    basestring = str
 
 
 def split_cmd(cmd_str):
