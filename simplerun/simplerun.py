@@ -24,7 +24,7 @@ class Command(object):
         self.stmt = stmt
 
     def run(self, data=None):
-        exc = None
+        ex = None
         try:
             proc = subprocess.Popen(self.stmt,
                                     universal_newlines=True,
@@ -37,12 +37,12 @@ class Command(object):
         except Exception as exc:
             out, err = None, None
             returncode = -1
-            exc = exc
+            ex = exc
 
         r = Result(self)
         r.std_out, r.std_err = out, err
         r.status_code = returncode
-        r.exc = exc
+        r.exc = ex
 
         return r
 
