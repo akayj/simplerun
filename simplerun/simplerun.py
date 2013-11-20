@@ -66,7 +66,7 @@ class Result(object):
         self.exc = None
 
     def __repr__(self):
-        return "<[{}] `{}`>".format(self.status_code, self.command)
+        return "<[{0}] `{1}`>".format(self.status_code, self.command)
 
 
 def run(cmds, data=None):
