@@ -38,7 +38,7 @@ Use iterable as input data:
 
     with open('simplerun.py') as f:
         r = simplerun.run('grep def', f)
-        print r.std_out
+        print(r.std_out)
 
 
 Use `Result` as input data:
@@ -68,7 +68,7 @@ Show history, and run it again with good input:
                            but not this line, sorry.''')
     >> r2
     <[0] `grep keyword`>
-    >> print r2.std_out,
+    >> print(r2.std_out)
     'This is a good line that contains the keyword\n'
     
     
