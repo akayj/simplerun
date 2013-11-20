@@ -75,9 +75,9 @@ def run(cmds, data=None):
     cmds = iter(cmds)
 
     if isinstance(data, Result):
-         data = data.std_out
+        data = data.std_out
     elif hasattr(data, '__iter__'):
-         data = ''.join(data)
+        data = ''.join(data)
 
     history = []
 
