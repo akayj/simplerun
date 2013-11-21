@@ -1,6 +1,11 @@
 import sys
 import shlex
 import subprocess
+import threading
+import logging
+
+logging.basicConfig(level=logging.DEBUG,
+                    format='[%(threadName)-8s] => %(message)s')
 
 
 PY3 = (sys.version[0] == '3')
@@ -96,3 +101,24 @@ def run(cmds, data=None):
     result.rest = list(cmds)
 
     return result
+
+
+def concurrent_run(batches, data=None):
+    if not batches:
+        return
+
+    def worker(bat, data=None):
+        cur = threading.currentThread()
+        cur.ret = run(bat, data)
+        logging.debug('Finished')
+
+    threads = []
+    for bat in batches:
+        t = threading.Thread(name=bat[:8], target=worker, args=(bat,))
+        threads.append(t)
+        t.setDaemon(True)
+        t.start()
+
+    map(lambda t: t.join(), threads)
+
+    return map(lambda t: t.ret, threads)
