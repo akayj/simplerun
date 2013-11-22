@@ -1,6 +1,9 @@
 Simplerun
 =========
 
+[![Build Status](https://travis-ci.org/netspyer/simplerun.png?branch=dev)](https://travis-ci.org/netspyer/simplerun)
+[![Downloads](https://pypip.in/d/simplerun/badge.png)](https://crate.io/package/simplerun)
+
 Make shell script running in a Pythonic way.
 
 Installation
