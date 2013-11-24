@@ -44,5 +44,13 @@ class DebugTest(unittest.TestCase):
         self.failUnlessEqual(r2.std_out, 'Good line contains the keyword\n')
 
 
+class ConCurrentRunTest(unittest.TestCase):
+
+    def test_concurrent_run(self):
+       batchs = ['ps aux', 'top -n 10', 'ps aux | grep Chrome']
+       r = simplerun.concurrent_run(batchs)
+       self.failUnlessEqual(len(r), 3)
+
+
 if __name__ == "__main__":
     unittest.main()
