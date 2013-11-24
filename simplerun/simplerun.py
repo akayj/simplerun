@@ -40,7 +40,7 @@ class Command(object):
             out, err = proc.communicate(data)
             returncode = proc.returncode
         except Exception as e:
-            out, err = None, None
+            out, err = '', ''
             returncode = -1
             exc = e
 
