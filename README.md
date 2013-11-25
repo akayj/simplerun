@@ -39,16 +39,16 @@ Basic usage:
 Use iterable as input data:
 --------------------------
 
-    with open('simplerun.py') as f:
-        r = simplerun.run('grep def', f)
-        print(r.std_out)
+    >> with open('simplerun.py') as f:
+    >>    r = simplerun.run('grep def', f)
+    >>    print r.std_out
 
 
 Use `Result` as input data:
 --------------------------
 
-    r_data = simplerun.run('ps aux')
-    r = simplerun.run('grep Chrome', r_data)
+    >> r_data = simplerun.run('ps aux')
+    >> r = simplerun.run('grep Chrome', r_data)
 
 Use as a debugger:
 ------------------
@@ -58,10 +58,12 @@ Use as a debugger:
     <[-1] `stranger`>
     >> r.exc
     OSError(2, 'No such file or directory')
+    
 Found the `stanger` is the evil
 
     >> r.history
     [<[0] `ps aux`>]
+    
 Show history, and run it again with good input:
 
     >> r.rest
