@@ -5,4 +5,4 @@ from .simplerun import run, concurrent_run
 
 run, concurrent_run  # make tricky with pep8
 
-__version__ = '0.3dev'
+__version__ = '0.3'
