@@ -109,10 +109,11 @@ def concurrent_run(batches, data=None):
 
     threads = []
     for bat in batches:
-        t = threading.Thread(name=bat[:8], target=worker, args=(bat,))
+        t = threading.Thread(name=bat.split()[0], target=worker, args=(bat,))
         threads.append(t)
         t.start()
 
-    map(lambda t: t.join(), threads)
+    for t in threads:
+        t.join()
 
-    return map(lambda t: t.ret, threads)
+    return [t.ret for t in threads]
