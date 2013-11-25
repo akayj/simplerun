@@ -1,6 +1,8 @@
 '''Make shell script running in a Pythonic way.'''
 
-from .simplerun import run
-run = run # make tricky with pep8
+from . import compat
+from .simplerun import run, concurrent_run
 
-__version__ = '0.2'
+run, concurrent_run  # make tricky with pep8
+
+__version__ = '0.3'

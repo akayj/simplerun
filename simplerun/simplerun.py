@@ -1,6 +1,7 @@
 import sys
 import shlex
 import subprocess
+import threading
 
 
 PY3 = (sys.version[0] == '3')
@@ -34,10 +35,10 @@ class Command(object):
                                     shell=False)
             out, err = proc.communicate(data)
             returncode = proc.returncode
-        except Exception as exc:
-            out, err = None, None
+        except Exception as e:
+            out, err = '', ''
             returncode = -1
-            exc = exc
+            exc = e
 
         r = Result(self)
         r.std_out, r.std_err = out, err
@@ -66,7 +67,7 @@ class Result(object):
         self.exc = None
 
     def __repr__(self):
-        return "<[{}] `{}`>".format(self.status_code, self.command)
+        return "<[{0}] `{1}`>".format(self.status_code, self.command)
 
 
 def run(cmds, data=None):
@@ -96,3 +97,23 @@ def run(cmds, data=None):
     result.rest = list(cmds)
 
     return result
+
+
+def concurrent_run(batches, data=None):
+    if not batches:
+        return
+
+    def worker(bat, data=None):
+        cur = threading.currentThread()
+        cur.ret = run(bat, data)
+
+    threads = []
+    for bat in batches:
+        t = threading.Thread(name=bat.split()[0], target=worker, args=(bat,))
+        threads.append(t)
+        t.start()
+
+    for t in threads:
+        t.join()
+
+    return [t.ret for t in threads]

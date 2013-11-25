@@ -1,6 +1,9 @@
 Simplerun
 =========
 
+[![Build Status](https://travis-ci.org/netspyer/simplerun.png?branch=dev)](https://travis-ci.org/netspyer/simplerun)
+[![Downloads](https://pypip.in/d/simplerun/badge.png)](https://crate.io/package/simplerun)
+
 Make shell script running in a Pythonic way.
 
 Installation
@@ -70,7 +73,7 @@ Show history, and run it again with good input:
                            but not this line, sorry.''')
     >> r2
     <[0] `grep keyword`>
-    >> print r2.std_out,
+    >> print(r2.std_out)
     'This is a good line that contains the keyword\n'
     
     
