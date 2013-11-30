@@ -3,6 +3,7 @@ import simplerun
 
 from simplerun.compat import SRTest
 
+
 class BasicTest(SRTest):
 
     def test_list(self):
@@ -48,9 +49,9 @@ class DebugTest(SRTest):
 class ConCurrentRunTest(SRTest):
 
     def test_concurrent_run(self):
-       batchs = ['ps aux', 'top -n 10', 'ps aux | grep Chrome']
-       r = simplerun.concurrent_run(batchs)
-       self.assert_eq(len(r), 3)
+        batchs = ['ps aux', 'top -n 10', 'ps aux | grep Chrome']
+        r = simplerun.concurrent_run(batchs)
+        self.assert_eq(len(r), 3)
 
 
 if __name__ == "__main__":

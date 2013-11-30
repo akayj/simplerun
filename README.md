@@ -25,9 +25,9 @@ Basic usage:
     >> r = simplerun.run('ls -l')
     >> r
     <[0] `ls -l`>
-    
+
 *0* refer to the exit code here.
-    
+
 
     >> print r.std_out
     total 8
@@ -58,12 +58,12 @@ Use as a debugger:
     <[-1] `stranger`>
     >> r.exc
     OSError(2, 'No such file or directory')
-    
+
 Found the `stanger` is the evil
 
     >> r.history
     [<[0] `ps aux`>]
-    
+
 Show history, and run it again with good input:
 
     >> r.rest
@@ -75,5 +75,3 @@ Show history, and run it again with good input:
     <[0] `grep keyword`>
     >> print(r2.std_out)
     'This is a good line that contains the keyword\n'
-    
-    
