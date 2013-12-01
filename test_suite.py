@@ -54,5 +54,14 @@ class ConCurrentRunTest(SRTest):
         self.assert_eq(len(r), 3)
 
 
+class ParalellRunTest(SRTest):
+
+    def test_prun(self):
+        batchs = ['ps aux', 'top -n 10', 'ps aux | grep Chrome']
+        results = simplerun.prun(batchs)
+        self.assert_eq(len(results), 3)
+        map(lambda r: self.assert_not_eq(r.et, -1), results)
+
+
 if __name__ == "__main__":
     unittest.main()
