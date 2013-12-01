@@ -3,6 +3,11 @@ import sys
 
 PY3 = (sys.version[0] == '3')
 
+if PY3:
+    basestring = str
+else:
+    basestring = basestring
+
 
 class SRTest(unittest.TestCase):
 

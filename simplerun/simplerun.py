@@ -1,13 +1,10 @@
-import sys
+import time
 import shlex
 import subprocess
 import threading
+import multiprocessing
 
-
-PY3 = (sys.version[0] == '3')
-
-if PY3:
-    basestring = str
+from .compat import basestring
 
 
 def split_cmd(cmd_str):
@@ -26,6 +23,7 @@ class Command(object):
 
     def run(self, data=None):
         exc = None
+        start = time.time()
         try:
             proc = subprocess.Popen(self.stmt,
                                     universal_newlines=True,
@@ -39,10 +37,13 @@ class Command(object):
             out, err = '', ''
             returncode = -1
             exc = e
+        finally:
+            end = time.time()
 
         r = Result(self)
         r.std_out, r.std_err = out, err
         r.status_code = returncode
+        r.et = float('%.2f' % (end - start))
         r.exc = exc
 
         return r
@@ -65,9 +66,10 @@ class Result(object):
         self.history = None
         self.rest = None
         self.exc = None
+        self.et = -1    # elapse time
 
     def __repr__(self):
-        return "<[{0}] `{1}`>".format(self.status_code, self.command)
+        return "<[{status_code}] `{command}` {et}s>".format(**self.__dict__)
 
 
 def run(cmds, data=None):
@@ -117,3 +119,17 @@ def concurrent_run(batches, data=None):
         t.join()
 
     return [t.ret for t in threads]
+
+
+def prun(batches, data=None):
+    if not batches:
+        return
+
+    pool_size = multiprocessing.cpu_count() * 2
+    pool = multiprocessing.Pool(processes=pool_size,
+                                maxtasksperchild=2)
+    results = pool.map(run, batches)
+    pool.close()
+    pool.join()
+
+    return results
