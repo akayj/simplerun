@@ -75,3 +75,11 @@ Show history, and run it again with good input:
     <[0] `grep keyword`>
     >> print(r2.std_out)
     'This is a good line that contains the keyword\n'
+
+
+Concurrent & Paralell:
+----------------------
+
+    >> batches = ['ps', 'top -n 10', 'uptime']
+    >> r = prun(batches)
+    >> r2 = concurrent_run(batches)
