@@ -8,4 +8,4 @@ python:
 script:
     - sudo rmdir /dev/shm
     - sudo ln -Tsf /{run,dev}/shm
-    python test_suite.py
+    - python test_suite.py
