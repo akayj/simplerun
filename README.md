@@ -36,22 +36,22 @@ Basic usage:
     drwxr-xr-x 6 yj staff 204 11 19 21:46 simplerun
 
 
-Use iterable as input data:
---------------------------
+Iterable as input:
+------------------
 
     >> with open('simplerun.py') as f:
     >>    r = simplerun.run('grep def', f)
     >>    print r.std_out
 
 
-Use `Result` as input data:
---------------------------
+Result as input:
+----------------
 
     >> r_data = simplerun.run('ps aux')
     >> r = simplerun.run('grep Chrome', r_data)
 
-Use as a debugger:
-------------------
+Debugger:
+---------
 
     >> r = run('ps aux | stranger | grep keyword')
     >> r
