@@ -124,12 +124,13 @@ def concurrent_run(batches, data=None):
 def prun(batches, data=None):
     if not batches:
         return
-
-    pool_size = multiprocessing.cpu_count() * 2
-    pool = multiprocessing.Pool(processes=pool_size,
-                                maxtasksperchild=2)
-    results = pool.map(run, batches)
-    pool.close()
-    pool.join()
+    elif isinstance(batches, basestring):
+        results = run(batches)
+    elif hasattr(batches, '__getslice__'):
+        pool_size = multiprocessing.cpu_count() * 2
+        pool = multiprocessing.Pool(processes=pool_size)
+        results = pool.map(run, batches)
+        pool.close()
+        pool.join()
 
     return results
