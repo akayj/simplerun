@@ -6,4 +6,4 @@ from .simplerun import run, prun, concurrent_run
 compat, run, concurrent_run  # make tricky with pep8
 prun
 
-__version__ = '0.3.1'
+__version__ = '0.3.2'
