@@ -127,7 +127,7 @@ def prun(batches, data=None):
         pass
     elif isinstance(batches, basestring):
         results = run(batches)
-    elif isinstance(batches, list) or isinstance(batches, tuple):
+    elif hasattr(batches, '__iter__'):
         pool_size = multiprocessing.cpu_count() * 2
         pool = multiprocessing.Pool(processes=pool_size)
         results = pool.map(run, batches)
