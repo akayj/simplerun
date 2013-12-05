@@ -83,3 +83,7 @@ Concurrent & Paralell:
     >> batches = ['ps', 'top -n 10', 'uptime']
     >> r = prun(batches)
     >> r2 = concurrent_run(batches)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/netspyer/simplerun/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
