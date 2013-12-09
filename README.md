@@ -29,7 +29,7 @@ Basic usage:
 *0* refer to the exit code here.
 
 
-    >> print r.std_out
+    >> print(r.std_out)
     total 8
     -rw-r--r-- 1 yj staff 664 11 19 21:46 README.md
     -rw-r--r-- 1 yj staff 829 11 18 22:39 setup.py
@@ -41,7 +41,7 @@ Iterable as input:
 
     >> with open('simplerun.py') as f:
     >>    r = simplerun.run('grep def', f)
-    >>    print r.std_out
+    >>    print(r.std_out)
 
 
 Result as input:
@@ -69,7 +69,7 @@ Show history, and run it again with good input:
     >> r.rest
     [['grep', 'keyword']]
     >>
-    >> r2 = run(r.rest, '''This is the good line that contains the keyword,
+    >> r2 = run(r.rest, '''This is the good line that contains the keyword
                            but not this line, sorry.''')
     >> r2
     <[0] `grep keyword`>
@@ -77,9 +77,9 @@ Show history, and run it again with good input:
     'This is a good line that contains the keyword\n'
 
 
-Concurrent & Paralell:
+Concurrent & Parallel:
 ----------------------
 
     >> batches = ['ps', 'top -n 10', 'uptime']
     >> r = prun(batches)
-    >> r2 = concurrent_run(batches)
+    >> r2 = crun(batches)

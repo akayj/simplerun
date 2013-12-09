@@ -120,6 +120,8 @@ def concurrent_run(batches, data=None):
 
     return [t.ret for t in threads]
 
+crun = concurrent_run
+
 
 def prun(batches, data=None):
     results = None

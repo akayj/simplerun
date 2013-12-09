@@ -53,8 +53,11 @@ class ConCurrentRunTest(SRTest):
         r = simplerun.concurrent_run(batchs)
         self.assert_eq(len(r), 3)
 
+        r = simplerun.crun(batchs)
+        self.assert_eq(len(r), 3)
 
-class ParalellRunTest(SRTest):
+
+class ParallelRunTest(SRTest):
 
     def test_prun(self):
         batchs = ['ps aux', 'top -n 10', 'ps aux | grep Chrome']
