@@ -17,6 +17,8 @@ def split_cmd(cmd_str):
 
 class Command(object):
     """Command object can run and return a `Result` object."""
+    
+    __slots__ = 'stmt'
 
     def __init__(self, stmt):
         self.stmt = stmt
@@ -57,6 +59,9 @@ class Command(object):
 
 class Result(object):
     """Result object including stdout, stderr, status_code."""
+    
+    __slots__ = ('command', 'std_out', 'std_err', 'status_code',
+                 'history', 'rest', 'exc', 'et')
 
     def __init__(self, command):
         self.command = command
