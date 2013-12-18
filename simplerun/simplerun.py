@@ -74,7 +74,9 @@ class Result(object):
         self.et = -1    # elapse time
 
     def __repr__(self):
-        return "<[{status_code}] `{command}` {et}s>".format(**self.__dict__)
+        return "<[{0}] `{1}` {2}s>".format(self.status_code,
+                                           self.command,
+                                           self.et)
 
 
 def run(cmds, data=None):
