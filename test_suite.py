@@ -5,6 +5,10 @@ from simplerun.compat import SRTest
 
 
 class BasicTest(SRTest):
+    
+    def test_repr(self):
+        r = simplerun.run('ls')
+        assert repr(r)
 
     def test_list(self):
         r = simplerun.run('ls -l')
